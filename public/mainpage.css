@@ -1,0 +1,49 @@
+body {
+	text-align: center;
+	background-color: black;
+	font-size: 20px;
+    color: #808080;
+    margin: 15px 15px 15px 15px;
+}
+
+#map_canvas { 
+    width:70%; 
+    height: 500px;
+    float: left;
+    border-color: red;
+}
+
+#chart_canvas { 
+    width:70%; 
+    height: 500px;
+    float: left;
+    border-color: red;
+}
+
+#menu {
+    padding: 15px 15px 15px 15px;
+    color: white;
+    text-align: left;
+    width: 30%;
+    height: 500px;
+    float: right;
+    border-color: red;
+}
+
+button {
+    margin: 5px 5px 5px 5px;
+    background-color: transparent;
+}
+
+input {
+    background-color: transparent;
+}
+
+select {
+    border: red;
+    color: #808080 ;
+}
+
+h1 {
+	font-size: 300%;
+}

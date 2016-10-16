@@ -1,0 +1,76 @@
+ <html>
+	<header>
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href='mainpage.css'>
+
+
+		<!-- Angular Scripts -->
+		<script src="/angular/angular.js" defer></script>
+    	<script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
+    	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+
+    	<!-- JS Browser Files -->
+    	<script src="/module.js" defer></script>
+    	<script src="/data.factory.js" defer></script>
+    	<script src="/map.controller.js" defer></script>
+    	<script src="/map.factory.js" defer></script>
+    	<script src="/chart.controller.js" defer></script>
+    	<script src="/chart.factory.js" defer></script>
+
+		<!-- Chart Files -->
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js'></script>
+		
+
+	</header>
+	<body ng-app="app">
+		
+		<h1>Tesla Car Part Suppliers</h1>
+		<br>
+		<div ng-controller='MapCtrl' ng-init='loadData()'>
+				<container>
+					<div id="map_canvas"></div>
+				</container>
+				<container>
+					<div id='menu'>
+						<h3>ACTIONS:</h3>
+						<form>
+							Find a supplier:
+							<select name='supplier' id='supplier' ng-model='input'>
+								<option ng-repeat='node in nodelist' value={{node.id}}>{{node.name}}</option>
+							<input type='submit' ng-click='findFactory()'/>
+						</form>
+						<div>
+							<button ng-show="!viewLanes" ng-click='toggleAllLanes()'>View All Routes</button>
+							<button ng-show="viewLanes" ng-click='toggleAllLanes()'>Hide All Routes</button>
+							<br>
+							<button ng-click='closeWindows()'>Close All Windows</button>
+						</div>
+					</div>
+				<container>
+		</div>
+		<br>
+		<div ng-controller='ChartCtrl' ng-init='loadData()'>
+    			<container>
+	    			<div id='chart_canvas'>
+	    				<canvas ng-show='A' id='highestInventory'></canvas>
+	    				<canvas ng-show='B' id='lowestInventory' style={width:'50%', height:'200px'}></canvas>
+	    				<canvas ng-show='C' id='highestCycle' style={width:'50%', height:'200px'}></canvas>
+	    				<canvas ng-show='D' id='lowestCycle' style={width:'50%', height:'200px'}></canvas>
+	    			</div>
+	    		</container>
+	    		<container>
+	    			<div id='menu'>
+	    				<h3>SELECT CHART:</h3> 
+		    			<button ng-click='highestInventory()'>Sort by Inventory (desc)</button>
+		    			<button ng-click='lowestInventory()'>Sort by Inventory (asc)</button>
+		    			<button ng-click='highestCycleTime()'>Sort by Cycle Time (desc)</button>
+		    			<button ng-click='lowestCycleTime()'>Sort by Cycle Time (asc)</button>
+		    		</div>
+		    	</container>
+    			
+		</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs8y5JOrKQCwLQnHKPaTC6r3MKvLwjs48"></script>
+	</body>
+</html>
